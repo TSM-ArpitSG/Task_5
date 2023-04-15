@@ -33,8 +33,8 @@ pipeline {
             steps{
                 script{
                     // Log in to Docker Hub using the 'arpitsh' username and 'dockerhubpwd' password stored as a Jenkins credential
-                    withCredentials([string(credentialsId: 'dockerpass', variable: 'dockerhubpwd')]) {
-                        bat 'docker login -u arpitsh -p R4kf55kX.teWQc5'
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        bat 'docker login -u arpitsh -p ${dockerhubpwd}'
                     }
                     // Push the Docker image to the 'arpitsh/devops-integration' repository on Docker Hub
                     bat 'docker push arpitsh/devops-integration'
